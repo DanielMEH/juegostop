@@ -170,7 +170,7 @@ console.log(datosUsuario.nombreM)
        
    
    }else{
-     alert("Completa todos los campos")
+     alert("Los campos deben de estar completos.")
 
 
    }
