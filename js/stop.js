@@ -63,7 +63,8 @@ let datosUsuario = {
   frutaM: "",
   cosaM: "",
 }; 
-console.log(datosUsuario.nombreM)
+
+
 
   const validarCamposF = (e) => {
     switch (e.target.name) {
@@ -160,6 +161,9 @@ console.log(datosUsuario.nombreM)
         
         </ul>
         `;
+        let datosUser = {"nameUSER": datosUsuario.nombreM, "puntos":countPuntos }
+        localStorage.setItem("data", JSON.stringify(datosUser));
+        
         repleace.innerHTML= html;
         document.querySelector(".ventModal").style.display="block";
         document.querySelector(".nuevoJ").addEventListener("click",()=>{
@@ -225,15 +229,15 @@ function cronometro() {
 
  
 
-  setTimeout(() => {
+
     window.onload = () => {
-      console.log("2 terminando proceso ...");
+  
 
       let load = document.querySelector(".loading__ft");
 
       load.style.display = "none";
       //  console.log(`resultado.. ${load}`);
     };
-  },2000);
+
 
 
