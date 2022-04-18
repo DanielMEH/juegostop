@@ -224,7 +224,7 @@ function cronometro() {
 }
 
  
-const promesa = new Promise((resolve, reject) => {
+
   setTimeout(() => {
     window.onload = () => {
       console.log("2 terminando proceso ...");
@@ -234,10 +234,6 @@ const promesa = new Promise((resolve, reject) => {
       load.style.display = "none";
       //  console.log(`resultado.. ${load}`);
     };
-  });
-  resolve();
-});
-// console.log("iniciando proceso");
-promesa.then((res) => {
-  // console.log("el resultado es: " + res);
-});
+  },2000);
+
+
