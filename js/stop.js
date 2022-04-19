@@ -26,15 +26,7 @@ names.addEventListener("keyup",(e)=>{
 //? funcionamiento html
 
 const ejecutarStop = ()=>{
-  let  campos = {
-      nombre: false,
-      apellido: false,
-      ciudad: false,
-      color: false,
-      animal: false,
-      fruta: false,
-      cosa: false
-  };
+
 
   let letra = document.querySelector(".leter")
  
@@ -64,7 +56,15 @@ let datosUsuario = {
   cosaM: "",
 }; 
 
-
+let  campos = {
+  nombre: false,
+  apellido: false,
+  ciudad: false,
+  color: false,
+  animal: false,
+  fruta: false,
+  cosa: false
+};
 
   const validarCamposF = (e) => {
     switch (e.target.name) {
@@ -139,7 +139,7 @@ let datosUsuario = {
        }`;
     (document.querySelector(".p").innerHTML = `Puntos: ${Math.abs(countPuntos)}`);
        let getPuntos = document.querySelector(".puntos_submit");
-     if (countPuntos >= 1200) {
+     if (countPuntos >= 600) {
        document.querySelector(".consulG").innerHTML="Ganaste";
        getPuntos.style.color = "green";
       } else {
@@ -161,28 +161,53 @@ let datosUsuario = {
         
         </ul>
         `;
-        let datosUser = {"nameUSER": datosUsuario.nombreM, "puntos":countPuntos }
-        localStorage.setItem("data", JSON.stringify(datosUser));
-        
+        let puntsUser= Math.abs(countPuntos);
+  
+      
+       setDatos(nameUsser, puntsUser)
         repleace.innerHTML= html;
         document.querySelector(".ventModal").style.display="block";
         document.querySelector(".nuevoJ").addEventListener("click",()=>{
-
-          window.location = "stopIndex.html";
-
+          
+          window.location= "stopIndex.html"
+          formulario.reset();
+          
         });
-       
-   
-   }else{
-     alert("Los campos deben de estar completos.")
-
-
-   }
+        
+        
+      }else{
+        alert("Los campos deben de estar completos.")
+        
+        
+      }
+      
+    })
+    
+    
+  }
   
-  })
-  
+  let array = []
 
-}
+  let htmlDate;
+  let laf;
+  function setDatos(valor1, valor2){
+    let datosUser = {"nameuser": valor1, "puntos":valor2 }
+    console.log(array)
+    let usersDate=localStorage.setItem("data", JSON.stringify(datosUser));
+     
+    let datos= JSON.parse(localStorage.getItem("data"))
+    array.push(datos)
+    getDatos()
+    
+  }
+  console.log(array)  
+  function getDatos() {
+    localStorage.setItem("data", JSON.stringify(array));
+    }
+
+  
+ 
+
 
 tiempoTw ="";
 function cronometro() {
