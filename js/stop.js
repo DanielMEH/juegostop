@@ -2,6 +2,7 @@ let formulario = document.querySelector(".formulario")
 
 const iniciar = document.querySelector(".iniciar");
 const nombre_input = document.querySelector(".nombre_input");
+
 let nameUsser;
 iniciar.addEventListener("click", ()=>{
   cronometro();
@@ -9,6 +10,7 @@ iniciar.addEventListener("click", ()=>{
   document.querySelector(".form_stop").classList.remove("active")
 })
 const names = document.getElementById("name");
+//const document= document.querySelector(".dc")
 names.addEventListener("keyup",(e)=>{
   const nombre_input=document.querySelector(".nombre_input");
   let inputNombre=e.target.value;
@@ -65,6 +67,7 @@ let  campos = {
   fruta: false,
   cosa: false
 };
+
 
   const validarCamposF = (e) => {
     switch (e.target.name) {
@@ -161,7 +164,7 @@ let  campos = {
         
         </ul>
         `;
-        let puntsUser= Math.abs(countPuntos);
+        let puntsUser = Math.abs(countPuntos);
   
       
        setDatos(nameUsser, puntsUser)
@@ -186,25 +189,45 @@ let  campos = {
     
   }
   
-  let array = []
-
-  let htmlDate;
-  let laf;
+  let object = []
   function setDatos(valor1, valor2){
+    let documento = document.querySelector(".documentoUser").value;
     let datosUser = {"nameuser": valor1, "puntos":valor2 }
-    console.log(array)
-    let usersDate=localStorage.setItem("data", JSON.stringify(datosUser));
+    localStorage.setItem("data", JSON.stringify(datosUser));
+    let  datos= JSON.parse(localStorage.getItem("data"))
+    object.push(datos)
+
      
-    let datos= JSON.parse(localStorage.getItem("data"))
-    array.push(datos)
-    getDatos()
+    let insertDate = localStorage.setItem(valor1, JSON.stringify(datos))
+    let nuevosDatos = JSON.parse(localStorage.getItem(insertDate))
+
+    return valor1, valor2
+    
+  
+  }
+  setDatos()
+ 
+  function recorrerLlaves(){
+    
+    let mostrarDato=[],
+    keys = Object.keys(localStorage),
+    i=0, key;
+    for (; key  = keys[i]; i++) {
+      
+    mostrarDato.push( key + " = " + localStorage.getItem(key))
+      
     
   }
-  console.log(array)  
-  function getDatos() {
-    localStorage.setItem("data", JSON.stringify(array));
-    }
+  
+  console.log("\n",mostrarDato[0].match())
+  
+}
 
+  recorrerLlaves()
+
+  
+ 
+ 
   
  
 
@@ -234,7 +257,7 @@ function cronometro() {
        document.querySelector(".ventModal").style.display = "block";
       setTimeout(()=>{
         window.location = "stopIndex.html";
-      },20000)
+      },2000)
 
     }
   }
